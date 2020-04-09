@@ -9,7 +9,9 @@ public class TestModel {
 		/*
 		 * 	Write here your test model
 		 */
-
+		//System.out.println(model.getTuttiGliStudenti("146101"));
+		//System.out.println(model.getCorso("146101"));
+		System.out.println(model.inscriviStudenteACorso("146101","Sistemi informativi industriali"));
 	}
 
 }

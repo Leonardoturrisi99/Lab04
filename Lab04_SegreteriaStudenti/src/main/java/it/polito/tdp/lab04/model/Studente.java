@@ -3,12 +3,12 @@ package it.polito.tdp.lab04.model;
 public class Studente {
 	@Override
 	public String toString() {
-		return "Studente [matricola=" + matricola + ", cognome=" + cognome + ", nome=" + nome + ", cds=" + cds + "]";
+		return matricola+"     "+nome+"      "+cognome+"      "+cds;
 	}
-	private String matricola;
-	private String cognome;
-	private String nome;
-	private String cds;
+	private String matricola=String.format("%20s", "matricola");
+	private String cognome=String.format("%20s", "cognome");
+	private String nome=String.format("%20s", "nome");
+	private String cds=String.format("%20s", "cds");
 	@Override
 	public int hashCode() {
 		final int prime = 31;

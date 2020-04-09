@@ -23,7 +23,7 @@ public class StudenteDAO {
 		
 
 			try {
-				Connection conn = ConnectDB.getConnection();
+				Connection conn = DBConnect.getConnection();
 				PreparedStatement st = conn.prepareStatement(sql);
 				
 				ResultSet rs = st.executeQuery();

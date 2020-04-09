@@ -1,6 +1,10 @@
 package it.polito.tdp.lab04.model;
 
 public class Corso {
+	
+	public String toString1() {
+		return codins+"        "+crediti+"        "+nome+"        "+pd;
+	}
 	private String codins;
 	private Integer crediti;
 	private String nome;
@@ -58,6 +62,12 @@ public class Corso {
 		this.crediti = crediti;
 		this.nome = nome;
 		this.pd = pd;
+	}
+	public int compareTo(Corso corso) {
+		return this.nome.compareTo(corso.nome);
+	}
+	public String toString() {
+		return nome;
 	}
 
 }

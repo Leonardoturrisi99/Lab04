@@ -4,22 +4,29 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectDB {
-	
-	// check user e password
-	static private final String jdbcUrl = "jdbc:mysql://localhost/iscritticorsi?user=root&password=root";
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
+class DBConnect {
+	private static final String jdbcURL="jdbc:mysql://localhost/iscritticorsi";
+	private static HikariDataSource ds;
 	public static Connection getConnection() {
-
+		if(ds==null) {
+			HikariConfig config=new HikariConfig();
+			config.setJdbcUrl(jdbcURL);
+			config.setUsername("root");
+			config.setPassword("root");
+			config.addDataSourceProperty("cachePrepStmts", true);
+			config.addDataSourceProperty("prepStmtChacheSize", 250);
+			config.addDataSourceProperty("prepStmtChacheSqlLimit","2048");
+			ds=new HikariDataSource(config);
+		}
 		try {
-				Connection connection = DriverManager.getConnection(jdbcUrl);
-				return connection;
-
+			return ds.getConnection();
 		} catch (SQLException e) {
-
 			e.printStackTrace();
-			throw new RuntimeException("Cannot get a connection " + jdbcUrl, e);
+			System.err.println("Errore di connessione a DB");
+			throw new RuntimeException(e);
 		}
 	}
-
 }
